@@ -5,10 +5,13 @@ class Benchmarking:
 
     def __init__(self):
         print('Bench Inicializado')
+    
+    def ejemplo(self):
         self.mO = MetodosOrdenamiento()
         arreglo = self.buil_arreglo(50000)
 
         tarea = lambda: self.mO.sortByBubble(arreglo)
+
         tiempoMillis = self.contar_con_current_time_milles(tarea)
         tiempoNano = self.contar_con_nano_time(tarea)
 
@@ -35,3 +38,10 @@ class Benchmarking:
         fin = time.time_ns()
 
         return (fin-inicio)/1000000000.0
+
+    def medir_tiempo(self, tarea, arreglo):
+        inicio = time.perf_counter()
+        tarea(arreglo)
+        fin = time.perf_counter()
+
+        return fin-inicio
