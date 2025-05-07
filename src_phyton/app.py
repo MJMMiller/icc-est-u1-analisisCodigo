@@ -2,6 +2,7 @@
 from benchmarking import Benchmarking
 from metodos_ordenamiento import MetodosOrdenamiento
 import matplotlib.pyplot as plt
+import datetime
 
 if __name__ == "__main__":
 
@@ -46,8 +47,13 @@ if __name__ == "__main__":
         plt.plot(tamanios, tiempo, label= nombre, marker='o')
 
     #agregar parametros
+
+    x = datetime.datetime.now()    
+    formatted_time = x.strftime('%Y-%m-%d %H:%M')
+
     plt.grid()
-    plt.suptitle('Comparativa metodos')
+    plt.gcf().canvas.manager.set_window_title('Grafica comparativas')
+    plt.title(f'Comparativa de metodos\nMateo Miller - {formatted_time}')
     plt.ylabel('Tiempos obtenidos')
     plt.xlabel('Tamaño del arreglo')
     plt.show()
